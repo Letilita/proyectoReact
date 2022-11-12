@@ -8,8 +8,17 @@ export const Home = () =>{
 
     return(
       <>
-      <div className={containerBody}>
-          <Row xs={1} md={2} className="g-4">
+      <div className={containerBody}>home
+          
+      </div>
+    </>
+    )
+}
+/* reemplazar por la base de datos 
+desestructuro cada llave de posicion del array
+
+
+<Row xs={1} md={2} className="g-4">
           {Array.from({ length: 4 }).map((_, idx) => (
             <Col>
               <Card>
@@ -23,10 +32,4 @@ export const Home = () =>{
               </Card>
             </Col>
           ))}
-          </Row>
-      </div>
-    </>
-    )
-}
-/* reemplazar por la base de datos 
-desestructuro cada llave de posicion del array*/
+          </Row>*/
