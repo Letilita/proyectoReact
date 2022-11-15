@@ -5,7 +5,7 @@ export const ItemList = ({datos}) =>{
 
     return(
         <div
-            className="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-3 posistion-absolute top-0"
+            className="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-3 posistion-absolute top-0 mx-2"
             style={{marginTop:'17em'}}
         >
             {datos.map(item =>
