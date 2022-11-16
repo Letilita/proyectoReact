@@ -4,7 +4,8 @@ import { CarrContext } from "./CarrContext"
 export const Carrito =()=>{
 
     const {items} =useContext(CarrContext)
-  
+
+    if(items.length > 0 ) {
 
     return(
         <div className="container">
@@ -37,9 +38,17 @@ export const Carrito =()=>{
 
             </div>)}
 
+            <button className="shadow fw-bold fs-5 w-100 btn btn-warning">Ir a inicio</button>
+
         </div>     
 
     ) 
+
+    }
+
+    else{
+        <div>No tenes productos en tu carrito</div>
+    }
     
 }
 

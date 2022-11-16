@@ -5,6 +5,7 @@ import { Item } from "./Item";
 
 export const ItemList = ({ datos }) => {
 
+
   const [filtro, setFiltro] = useState("");
   const datosFiltrados = filtro ? filtrarDatos() : datos;
   console.log(datosFiltrados);
@@ -12,6 +13,7 @@ export const ItemList = ({ datos }) => {
   function filtrarDatos() {
     return datos.filter((dato) => dato.categoria === filtro);
   }
+
 
   return (
     <div className="d-flex flex-column mb-0 mx-4 w-100">

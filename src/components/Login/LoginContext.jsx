@@ -5,11 +5,75 @@ import { createContext } from "react"
 export const LoginContext = createContext()
 export const LoginProvider = ({children}) =>{
 
-    const [logged, setLogged] = useState(true)
+    const [logged, setLogged] = useState(false)
+    const [user,setUser]=useState(undefined)
+    const [waiting, setWaiting] = useState(false)
+    const [register,setRegister] = useState(false)
+
+//  user demo:  const user = {name:'admin', pass:'admin'}
+
+    function login(){
+        setLogged(true)
+    }
+
+    function wait(){
+        setWaiting(true)
+    }
+
+    function error(){
+        setWaiting(false)
+    }
+
+    async function firebaseLogin(user){
+
+        const{
+            displayName,
+            isAnonymous,
+            photoURL,
+            email,
+            uid
+        } = await user;
+
+        if(uid && !isAnonymous){
+            login()
+            setUser({
+                nombre: displayName,
+                img:photoURL,
+                email,
+                uid
+            }
+
+            )
+
+        }
+    }
+
+    function signup(){
+        setRegister(!register)
+    }
+
+    function logout(){
+        setLogged(false);
+        setUser(undefined);
+        error();
+    }
 
     return(
         <LoginContext.Provider
-            value={{logged}}>            
+            value={{
+                firebaseLogin,
+                logged,
+                register,
+                waiting,
+                logout,
+                signup,
+                login,
+                error,
+                user,
+                wait
+            
+            }}
+        >            
             { children }
         </LoginContext.Provider>
     )
@@ -18,40 +82,5 @@ export const LoginProvider = ({children}) =>{
 
  
 
-// el children es para seguir viendo el NavBar
 
-/*    
 
-    function logout(){
-        setLogged(false)
-        setUser(undefined)
-    }
-    function loging() {
-        setLogged(true)
-    }
-
-    function wait(){
-        setWaiting(false)
-    }
-    function error(){
-        setWaiting(false)
-    }
-
-firebaseLogin(user){
-
-    const{
-        displayName,
-        isAnonymous,
-        photoURL,
-        email,
-        uid
-    }
-}*/
-    
-/*ver a quien le modifica el cambio de nombre*/
-
-/*    <LoginContext.Provider
-        >
-/*            {children}
-        </LoginContext.Provider>
-     adentro de LoginContext.Provider>value={{logged}}*/
