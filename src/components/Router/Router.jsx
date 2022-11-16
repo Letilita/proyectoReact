@@ -8,19 +8,18 @@ import { ItemListContainer } from '../Pages/Home/ItemsList';
 import { ItemDetailsContainer } from '../Pages/Home/ItemDetails';
 import { LoginLayout } from '../Layout';
 import { Route, Routes } from 'react-router-dom';
-import { Css } from '../NavBar/Css';
+import { CarrouselContainer } from '../Pages/Inicio/CarrouselContainer';
+
 
 export const Router = () =>{
         
-    const {containerNavBar} = Css
-
-return(
+ return(
 
     <LoginLayout>
         <Routes>
                 <Route path='/' element={<ItemListContainer />} />
                 <Route path='/*' element={<ItemListContainer />}/>
-                <Route path='/inicio' element={<ItemListContainer />} />
+                <Route path='/inicio' element={<CarrouselContainer />} />
                 <Route path='/promociones' element={<Promociones />}/>
                 <Route path='/perfil' element={<Perfil />}/>
                 <Route path='/carrito' element={<Carrito />}/>

@@ -2,17 +2,19 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CarrContext } from "../Carrito";
 import { Css } from "./index";
+import styles from "./Navbar.module.css";
 export const Pages = () => {
 
+
     const {cartCount} = useContext(CarrContext)
-    const menu = ["Inicio","Promociones","Nosotros","Perfil","Carrito","Contacto"];
-    const {ul} = Css
+    const menu = ["Inicio","Productos","Promociones","Nosotros", "Perfil", "Contacto"];
+    // const {ul} = Css
     const [active, setActive]=useState(window.location.pathname)
 
     function activeLink(item){
         const rutaActual =`/${item.toLowerCase()}`
         return active === rutaActual
-        ? 'bg-secondary rounded'
+        ? `fw-bold text-white ${styles.activo}`
         : null
     }
 
@@ -22,7 +24,23 @@ export const Pages = () => {
     }
 
     return(
-        <ul className={ul}>
+        <div className="navbar-nav">
+              {menu.map((opcion) => (
+                
+                  <Link
+                    key={opcion}
+                    className={`nav-link ${activeLink(opcion)} ${styles.navLink}`}
+                    to={opcion.toLowerCase()}
+                    onClick={() => handleClick(opcion)}
+                  >
+                    {opcion}
+                  </Link>
+                
+              ))}
+              
+            </div>
+    )
+        {/* <ul className={ul}>
 
             {cartCount>0 
             && 
@@ -45,7 +63,7 @@ export const Pages = () => {
                 </Link>
            )}
         </ul>)
-
+ */}
 
     
 }

@@ -1,9 +1,11 @@
+import styles from "./Layout.module.css"
+
 export const MainLayout =({children}) =>{
 
     return(
         <div 
-            className="d-flex align-items-center justify-content-center"
-            style ={{height: '100vh', zIndex:'-1'}}  
+            className={`container-fluid d-flex justify-content-center bg-light m-0 mt-5 pt-3 ${styles.fondo} ${styles.scroll}`}
+              
         >
             {children}
         </div>
@@ -12,4 +14,3 @@ export const MainLayout =({children}) =>{
     )
 }
 
-//className="container d-flex align-items justify-content-center position-absolute bg-light"

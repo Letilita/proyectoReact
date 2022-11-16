@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react"
 import gif from './../../../../assets/Img/cargando5.gif'
 import { useFetch } from "../../../../hooks"
-import { api } from "../../../../servicios/api"
 import { ItemList } from "./ItemList"
 
 export const ItemListContainer =() =>{

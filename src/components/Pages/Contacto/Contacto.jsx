@@ -1,62 +1,70 @@
-import { useState } from "react"
-
-const initialState= {nombre:'', email:'', texto:''}
+import { useState } from "react";
 
 export const Contacto = () => {
-    
-    const[form , setForm] = useState(initialState)
+  const initialState = { nombre: "", email: "", texto: "" };
 
-    const inputChangeHandle = (e) => {
-        const { name , value } = e.target
-        setForm({...form, [name]:value})
-    }
+  const [form, setForm] = useState(initialState);
 
-    const handleclick = (e) =>{
-        e.preventDefault()
-        console.log(form)
-    }
+  const inputChangeHandle = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-    return(
-        
-        <form name='formulario' className="col-4 mb-5">
-                <input 
-                    name='nombre'
-                    value={form.nombre}
-                    type='text'
-                    className="form-control my-3"
-                    placeholder="Ingrese su nombre"
-                    rows={5}
-                    onChange={inputChangeHandle}
-                />
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log(form);
+  };
 
-                <input 
-                    name='email'
-                    value={form.email}
-                    type='email'
-                    className="form-control my-3"
-                    placeholder="Ingrese su email"
-                    rows={5}
-                    onChange={inputChangeHandle}
-                />
+  return (
+    <div className="container-fluid mx-auto mt-5 pt-5 text-white">
+      <h2 >Dejanos tu consulta</h2>
 
-                <textarea
-                    name="texto"
-                    value={form.texto}
-                    className='form-control'
-                    placeholder="Ingrese su mensaje"
-                    rows={5}
-                    onChange={inputChangeHandle}
-                />
+      <form name="formulario" className="my-5 w-75 m-auto">
+        <div className="mb-3 row">
+          <label className="col-sm-2 col-form-label text-start">Nombre</label>
+          <div className="col-sm-10">
+            <input
+              name="nombre"
+              value={form.nombre}
+              type="text"
+              className="form-control"
+              placeholder="Ingrese su nombre"
+              onChange={inputChangeHandle}
+            />
+          </div>
+        </div>
 
-                <button 
-                    className="btn btn-primary my-3"
-                    onClick={handleclick}
-                    >
-                        Enviar
-                    </button>
+        <div className="mb-3 row">
+          <label className="col-sm-2 col-form-label text-start">Email</label>
+          <div className="col-sm-10">
+            <input
+              name="email"
+              value={form.email}
+              type="email"
+              className="form-control"
+              placeholder="Ingrese su email"
+              onChange={inputChangeHandle}
+            />
+          </div>
+        </div>
 
-        </form>
-
-       
-    )
-}
+        <div className="mb-3 row">
+          <label className="col-sm-2 col-form-label text-start">Mensaje</label>
+          <div className="col-sm-10">
+            <textarea
+              name="texto"
+              value={form.texto}
+              className="form-control"
+              placeholder="Ingrese su mensaje"
+              rows={5}
+              onChange={inputChangeHandle}
+            />
+          </div>
+        </div>
+        <button className="btn btn-success my-3" onClick={handleClick}>
+          Enviar
+        </button>
+      </form>
+    </div>
+  );
+};
